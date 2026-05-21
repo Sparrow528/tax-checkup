@@ -2,780 +2,292 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>企业税负自查</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>企业税负自查 — 宇守信咨询</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f7fa; color:#2d3436; padding-bottom:60px; }
-.header { background:linear-gradient(135deg,#065f46,#059669); color:white; padding:28px 16px 22px; text-align:center; }
-.header h1 { font-size:20px; font-weight:700; margin-bottom:4px; }
-.header p { font-size:12px; opacity:0.85; }
-.header .badge { display:inline-block; background:rgba(255,255,255,0.15); border-radius:20px; padding:3px 12px; font-size:10px; margin-top:6px; letter-spacing:1px; }
-.tabs { display:flex; background:white; box-shadow:0 1px 4px rgba(0,0,0,0.06); position:sticky; top:0; z-index:10; }
-.tab { flex:1; text-align:center; padding:12px 0; font-size:13px; font-weight:500; color:#999; cursor:pointer; border-bottom:2px solid transparent; transition:all .2s; }
-.tab.active { color:#065f46; border-bottom-color:#065f46; font-weight:600; }
-.panel { display:none; padding:12px; }
-.panel.active { display:block; }
-.card { background:white; border-radius:14px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.05); margin-bottom:10px; }
-.card-title { background:#f0f7f4; padding:10px 14px; font-size:13px; font-weight:600; color:#065f46; border-bottom:1px solid #e0ede8; }
-.input-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:12px 14px; }
-.form-row { display:flex; align-items:center; gap:4px; padding:0; border:none; }
-.form-row label { font-size:11px; color:#888; white-space:nowrap; flex-shrink:0; min-width:auto; }
-.form-row input,.form-row select { padding:8px 10px; border:1px solid #e0e0e0; border-radius:10px; font-size:13px; flex:1; min-width:0; background:#fffcf0; outline:none; transition:all .15s; width:100%; }
-.form-row input:focus,.form-row select:focus { border-color:#065f46; box-shadow:0 0 0 2px rgba(6,95,70,0.1); }
-.form-row .unit { font-size:10px; color:#ccc; flex-shrink:0; }
-.form-row.full { grid-column:1/-1; }
-.form-row input:focus,.form-row select:focus { border-color:#065f46; box-shadow:0 0 0 2px rgba(6,95,70,0.1); }
-.form-row .unit { font-size:11px; color:#aaa; }
-.yesno { display:flex; gap:6px; }
-.yesno span { padding:4px 14px; border-radius:14px; font-size:12px; cursor:pointer; border:1px solid #e0e0e0; color:#999; transition:all .15s; }
-.yesno span.sel-yes { background:linear-gradient(135deg,#065f46,#059669); color:white; border-color:#065f46; }
-.yesno span.sel-no { background:#f0f0f0; color:#bbb; border-color:#e0e0e0; }
-.fixed-bottom { position:sticky; bottom:0; background:white; padding:10px 12px; display:flex; gap:8px; box-shadow:0 -2px 8px rgba(0,0,0,0.05); z-index:10; }
-.fixed-bottom button { flex:1; padding:12px; border-radius:12px; font-size:14px; font-weight:600; border:none; cursor:pointer; transition:transform .1s; }
-.fixed-bottom button:active { transform:scale(.97); }
-.btn-primary { background:linear-gradient(135deg,#065f46,#059669); color:white; }
-.btn-secondary { background:#f0f2f5; color:#666; }
-.score-card { background:linear-gradient(135deg,#065f46,#059669); color:white; border-radius:16px; padding:24px 16px; text-align:center; margin-bottom:14px; }
-.score-card .label { font-size:12px; opacity:0.85; }
-.score-card .score { font-size:36px; font-weight:800; margin:4px 0; }
-.score-card .grade { font-size:15px; font-weight:600; margin-bottom:2px; }
-.score-card .suggestion { font-size:12px; opacity:0.9; line-height:1.5; }
-.dim-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
-.dim-card { background:white; border-radius:12px; padding:14px; text-align:center; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-.dim-card .name { font-size:11px; color:#888; margin-bottom:3px; }
-.dim-card .dscore { font-size:18px; font-weight:700; }
-.dim-card .dstatus { font-size:10px; margin-top:3px; padding:2px 8px; border-radius:8px; display:inline-block; }
-.rate-green,.pass { background:#e6f7e6; color:#16a34a; }
-.rate-yellow,.warn,.caution { background:#fef9e7; color:#d97706; }
-.rate-red,.danger,.fail { background:#feeaea; color:#dc2626; }
-.help-card { background:white; border-radius:14px; padding:18px; margin-bottom:10px; box-shadow:0 1px 4px rgba(0,0,0,0.05); }
-.help-card h3 { font-size:15px; margin-bottom:6px; color:#065f46; }
-.help-card p,.help-card li { font-size:13px; color:#555; line-height:1.7; }
-.help-card ol { padding-left:18px; }
-.help-card ol li { margin-bottom:4px; }
-.table-header { display:none; }
-.check-list { list-style:none; padding:0; }
-.check-list li { padding:6px 0; font-size:13px; color:#444; border-bottom:1px solid #f0f0f0; display:flex; align-items:center; gap:8px; }
-.check-list li:last-child { border-bottom:none; }
-.detail-item { padding:10px 14px; border-bottom:1px solid #f0f0f0; display:flex; justify-content:space-between; align-items:center; }
-.detail-item:last-child { border-bottom:none; }
-.detail-item .dlabel { font-size:12px; color:#666; }
-.detail-item .dval { font-size:14px; font-weight:600; }
-.detail-item .dval.pass { color:#16a34a; }
-.detail-item .dval.warn { color:#d97706; }
-.detail-item .dval.danger { color:#dc2626; }
-.result-card { background:white; border-radius:12px; padding:14px; margin-bottom:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-.result-card h3 { font-size:14px; color:#065f46; margin-bottom:6px; }
-.result-row { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid #f0f0f0; font-size:13px; }
-.result-row:last-child { border-bottom:none; }
-.result-row .label { color:#666; }
-.result-row .val { font-weight:600; }
-.result-row.total { border-top:2px solid #065f46; padding-top:6px; margin-top:4px; font-weight:700; }
-.result-row.total .val { color:#065f46; font-size:15px; }
-.table-row { display:flex; align-items:center; padding:10px 14px; border-bottom:1px solid #f5f5f5; gap:6px; flex-wrap:wrap; }
-.table-row .col-name { flex:1; font-size:13px; font-weight:600; color:#333; min-width:80px; }
-.table-row .col-std { font-size:11px; color:#999; min-width:80px; }
-.table-row .col-value { font-size:13px; font-weight:600; color:#444; min-width:60px; text-align:right; }
-.table-row .col-score { font-size:12px; font-weight:600; color:#065f46; min-width:30px; text-align:center; }
-.table-row .col-status { padding:2px 8px; border-radius:8px; font-size:10px; font-weight:600; }
-.status-green { background:#e6f7e6; color:#16a34a; }
-.status-yellow { background:#fef9e7; color:#d97706; }
-.status-red { background:#feeaea; color:#dc2626; }
-.member-banner { background:linear-gradient(135deg,#0f0c29,#302b63,#24243e); border-radius:14px; padding:18px; text-align:center; margin-top:14px; }
-.member-banner h3 { font-size:14px; color:white; margin-bottom:4px; }
-.member-banner p { font-size:11px; color:rgba(255,255,255,0.85); line-height:1.5; }
-.member-banner .btn { display:inline-block; background:white; color:#302b63; padding:8px 22px; border-radius:20px; text-decoration:none; font-size:12px; font-weight:600; margin-top:6px; }
-.contact { background:#f0f7f4; border-radius:10px; padding:12px; }
-.contact strong { font-size:13px; color:#065f46; }
-.scenario-grid { display:flex; gap:8px; }
-.scenario-btn { flex:1; padding:10px; border-radius:8px; font-size:13px; font-weight:600; border:2px solid #ddd; background:white; color:#888; cursor:pointer; text-align:center; transition:all .2s; }
-.scenario-btn.active { border-color:#065f46; color:#065f46; background:#f0f7f4; }
-.chart-area { background:white; border-radius:16px; padding:20px; box-shadow:0 2px 12px rgba(0,0,0,0.06); margin-bottom:16px; text-align:center; }
-.chart-area canvas { max-width:100%; height:auto; }
-@media (max-width:480px) {
-  .input-grid{grid-template-columns:1fr}
-  .dim-grid{grid-template-columns:1fr 1fr}
-  .table-row{font-size:12px}
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#2d3436;padding-bottom:60px}
+.hd{background:linear-gradient(135deg,#065f46,#059669);color:#fff;padding:26px 16px 20px;text-align:center}
+.hd h1{font-size:19px;font-weight:700}
+.hd p{font-size:11px;opacity:.8;margin-top:4px}
+.tabs{display:flex;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.05);position:sticky;top:0;z-index:10}
+.tab{flex:1;text-align:center;padding:11px 0;font-size:13px;font-weight:500;color:#999;cursor:pointer;border-bottom:2px solid transparent}
+.tab.act{color:#065f46;border-bottom-color:#065f46;font-weight:600}
+.pn{padding:12px;max-width:640px;margin:0 auto;display:none}
+.pn.act{display:block}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:10px}
+.ct{background:#f0f7f4;padding:10px 14px;font-size:12px;font-weight:600;color:#065f46;border-bottom:1px solid #e0ede8}
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px 12px}
+.gr .fw{grid-column:1/-1}
+.frr{display:flex;align-items:center;gap:4px}
+.frr label{font-size:11px;color:#777;white-space:nowrap;min-width:40px}
+.frr input,.frr select{padding:7px 8px;border:1px solid #ddd;border-radius:8px;font-size:12px;flex:1;min-width:0;background:#fffcf0;outline:0}
+.frr select{background:#fff}
+.frr input:focus,.frr select:focus{border-color:#065f46}
+.btm{position:sticky;bottom:0;background:#fff;padding:10px 12px;display:flex;gap:8px;box-shadow:0 -2px 8px rgba(0,0,0,.04);z-index:10;max-width:640px;margin:0 auto}
+.btm button{flex:1;padding:11px;border-radius:10px;font-size:13px;font-weight:600;border:0;cursor:pointer}
+.bp{background:linear-gradient(135deg,#065f46,#059669);color:#fff}
+.bs{background:#eef2f7;color:#666}
+.sc{background:linear-gradient(135deg,#065f46,#059669);color:#fff;border-radius:14px;padding:22px 16px;text-align:center;margin-bottom:12px}
+.sc .lb{font-size:11px;opacity:.85}
+.sc .n{font-size:34px;font-weight:800;margin:4px 0}
+.sc .g{font-size:14px;font-weight:600;margin-bottom:2px}
+.sc .sg{font-size:11px;opacity:.9}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.dc{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.dc .dn{font-size:10px;color:#999}
+.dc .ds{font-size:18px;font-weight:700}
+.dc .dm{font-size:10px;color:#bbb;margin-top:2px}
+.dc .dr{font-size:10px;margin-top:3px;padding:2px 8px;border-radius:6px;display:inline-block}
+.grn{background:#e6f7e6;color:#16a34a}
+.yel{background:#fef9e7;color:#d97706}
+.red{background:#feeaea;color:#dc2626}
+.tbl{width:100%}
+.th{display:flex;background:#eef6ff;padding:7px 10px;font-size:10px;color:#666;font-weight:600}
+.th span{flex:1;text-align:center}
+.th span:first-child{flex:1.5;text-align:left}
+.tr{display:flex;padding:7px 10px;font-size:11px;border-bottom:1px solid #f5f7fa;align-items:center}
+.tr span{flex:1;text-align:center}
+.tr span:first-child{flex:1.5;text-align:left;font-weight:600;color:#333}
+.st-g{color:#16a34a;font-weight:600}
+.st-y{color:#d97706;font-weight:600}
+.st-r{color:#dc2626;font-weight:600}
+.hc{background:#fff;border-radius:10px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.hc h3{font-size:13px;margin-bottom:6px;color:#065f46}
+.hc p,.hc li{font-size:12px;color:#555;line-height:1.7}
+.con{background:#eef6ff;border-radius:8px;padding:10px}
+.con strong{font-size:12px;color:#065f46}
+.bk{text-align:center;padding:12px}
+.bk a{display:inline-block;padding:8px 20px;background:#eef2f7;color:#065f46;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #d0dcec}
+.fb{background:linear-gradient(135deg,#065f46,#059669);color:#fff;text-align:center;padding:18px 14px;margin-top:8px}
+.fb .t{font-size:14px;font-weight:700}
+.fb .d{font-size:11px;opacity:.85;margin:4px 0 10px}
+.fb .b{display:inline-block;background:#fff;color:#065f46;padding:7px 22px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none}
+.fb .c{font-size:10px;opacity:.6;margin-top:6px}
+@media(max-width:480px){.gr{grid-template-columns:1fr}.dg{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
-<!-- 顶部 -->
-<div class="header">
+<div class="hd">
   <h1>📋 企业税负自查</h1>
-  <p>选择行业 · 录入数据 · 自动比对</p>
-  <div class="badge">您身边的财税专家 · 洪淳宇</div>
+  <p>选行业·填数据·自动比对行业标准</p>
 </div>
 
-<!-- Tab导航 -->
-<div class="tabs" id="tabNav">
-  <div class="tab active" data-tab="input" onclick="switchTab('input')">📝 填数据 <span class="count" id="fieldCount">15</span></div>
-  <div class="tab" data-tab="report" onclick="switchTab('report')">📊 看结果</div>
-  <div class="tab" data-tab="help" onclick="switchTab('help')">❓ 说明</div>
+<div class="tabs">
+  <div class="tab act" onclick="st('input')">📝 填数据</div>
+  <div class="tab" onclick="st('report')">📊 报告</div>
+  <div class="tab" onclick="st('help')">❓ 说明</div>
 </div>
 
-<!-- ===== 面板1: 录入 ===== -->
-<div class="panel active" id="panel-input">
-  <div class="panel-section">
-    <!-- 上传区域 -->
-    <div style="background:white;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.05);margin-bottom:10px;">
-      <div style="background:#f0f7f4;padding:10px 14px;font-size:13px;font-weight:600;color:#065f46;border-bottom:1px solid #e0ede8;">📁 上传Excel自动填表</div>
-      <div style="padding:14px;text-align:center;">
-        <input type="file" id="fileInput" accept=".xlsx,.xls" style="display:none;" onchange="parseExcel(this)">
-        <div onclick="document.getElementById('fileInput').click()" style="display:inline-block;padding:10px 24px;border:2px dashed #065f46;border-radius:12px;color:#065f46;font-size:13px;font-weight:600;cursor:pointer;background:#fafff8;">
-          📤 点击上传Excel文件
-        </div>
-        <div style="margin-top:8px;font-size:11px;color:#999;">
-          支持格式：.xlsx / .xls · <a href="企业税负自查_数据采集表.xlsx" download style="color:#065f46;font-weight:600;text-decoration:none;">📥 下载模板</a>
-        </div>
+<div class="pn act" id="p-input">
+  <div class="card">
+    <div class="ct">🏭 企业信息</div>
+    <div class="gr">
+      <div class="frr fw"><label>企业名称</label><input id="f_name" placeholder="选填"></div>
+      <div class="frr fw"><label>行业类型</label>
+        <select id="f_industry">
+          <option value="">-- 请选择 --</option>
+          <option value="制造业">制造业</option>
+          <option value="商贸零售">商贸零售</option>
+          <option value="服务业">服务业</option>
+          <option value="建筑业">建筑业</option>
+          <option value="房地产">房地产</option>
+          <option value="高新技术企业">高新技术企业</option>
+        </select>
       </div>
     </div>
-    <div id="inputGroups"></div>
   </div>
-  <div class="fixed-bottom">
-    <button class="btn-secondary" onclick="resetAll()">清空重填</button>
-    <button class="btn-primary" onclick="calcAndShow()">查看自查报告</button>
+
+  <div class="card">
+    <div class="ct">💰 税务数据（万元）</div>
+    <div class="gr" id="inputGrid"></div>
+  </div>
+
+  <div class="btm">
+    <button class="bs" onclick="resetAll()">🗑️ 清除</button>
+    <button class="bp" onclick="calc()">📊 查看报告</button>
   </div>
 </div>
 
-<!-- ===== 面板2: 报告 ===== -->
-<div class="panel" id="panel-report">
-  <div class="report-section">
-    <div id="scoreCard" class="score-card">
-      <div class="label">综合评分</div>
-      <div class="score">—</div>
-      <div class="grade">请先在「填数据」页面录入企业税务数据</div>
-      <div class="suggestion"></div>
-    </div>
-    <div id="dimGrid" class="dim-grid"></div>
-    <div id="radarSection" style="margin-top:12px;display:none;">
-      <div style="background:white;border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
-        <h3 style="font-size:14px;color:#065f46;margin-bottom:10px;text-align:center;">五大维度雷达图</h3>
-        <canvas id="radarChart" width="400" height="400" style="width:100%;max-width:360px;height:auto;display:block;margin:0 auto;"></canvas>
-      </div>
-    </div>
-    <div id="indicatorTable" class="indicator-table" style="display:none">
-      <div class="table-header">
-        <span class="col-name">指标</span>
-        <span class="col-std">行业标准</span>
-        <span class="col-value">实际值</span>
-        <span class="col-score">评分</span>
-        <span class="col-status">状态</span>
-      </div>
+<div class="pn" id="p-report">
+  <div id="scoreCard" class="sc">
+    <div class="lb">综合评分</div>
+    <div class="n">—</div>
+    <div class="g">请先填写数据</div>
+  </div>
+  <div id="dimGrid" class="dg"></div>
+  <div class="card">
+    <div class="ct">📋 指标明细</div>
+    <div class="tbl">
+      <div class="th"><span>指标</span><span>标准</span><span>实际</span><span>得分</span><span>状态</span></div>
       <div id="indicatorRows"></div>
     </div>
-    <div class="fixed-bottom">
-      <button class="btn-secondary" onclick="switchTab('input')">← 修改数据</button>
-      <button class="btn-primary" onclick="shareResult()">📤 分享报告</button>
+  </div>
+  <div class="btm">
+    <button class="bs" onclick="st('input')">← 修改</button>
+    <button class="bp" onclick="shareResult()">📤 分享</button>
+  </div>
+</div>
+
+<div class="pn" id="p-help">
+  <div class="hc">
+    <h3>📋 使用说明</h3>
+    <ol><li>选择行业类型</li><li>填写税务数据（万元）</li><li>点击「查看报告」自动计算</li></ol>
+  </div>
+  <div class="hc">
+    <h3>📊 评分规则</h3>
+    <p><span class="st-g">🟢 正常</span> — 达标，得满分</p>
+    <p><span class="st-y">🟡 关注</span> — 偏离标准，得60%分</p>
+    <p><span class="st-r">🔴 预警</span> — 明显异常，得20%分</p>
+  </div>
+  <div class="hc">
+    <h3>🏭 行业分类</h3>
+    <p>制造业、商贸零售、服务业、建筑业、房地产、高新技术企业</p>
+  </div>
+  <div class="hc">
+    <h3>👤 关于作者</h3>
+    <div class="con">
+      <strong>洪淳宇 · 您身边的财税专家</strong>
+      <p style="font-size:12px;color:#555;margin-top:2px;">专业税负分析·税务合规·财税咨询</p>
+      <p style="font-size:11px;color:#999;margin-top:4px;">📞 18601294989</p>
     </div>
   </div>
 </div>
 
-<!-- ===== 面板3: 说明 ===== -->
-<div class="panel" id="panel-help">
-  <div class="help-section">
-    <div class="help-card">
-      <h3>📋 使用方法</h3>
-      <ol>
-        <li>点击「填数据」标签，<strong>先选择行业类型</strong>（下拉框）</li>
-        <li>填写企业税务相关数据（黄色输入框，单位：万元）</li>
-        <li>点击底部「查看自查报告」，自动计算并比对行业标准</li>
-      </ol>
-    </div>
-    <div class="help-card">
-      <h3>📊 评分规则</h3>
-      <p><span class="green">🟢 正常</span> — 税负指标在行业标准范围内，得满分</p>
-      <p><span class="yellow">🟡 关注</span> — 指标偏离行业标准，得60%分</p>
-      <p><span class="red">🔴 预警</span> — 指标明显异常，得20%分</p>
-    </div>
-    <div class="help-card">
-      <h3>🏭 行业分类</h3>
-      <p>制造业、商贸零售、服务业、建筑业、房地产、高新技术企业</p>
-      <p style="margin-top:6px;font-size:12px;color:#999;">各行业增值税、所得税、综合税负标准均不同，系统自动匹配</p>
-    </div>
-    <div class="help-card">
-      <h3>👤 关于作者</h3>
-      <div class="contact">
-        <strong>洪淳宇 · 您身边的财税专家</strong>
-        <p>为企业提供专业税负分析、税务合规、财税咨询服务</p>
-        <p style="margin-top:6px;font-size:12px;color:#999;">📞 18601294989</p>
-      </div>
-    </div>
-  </div>
+<div class="bk"><a href="https://sparrow528.github.io/checkup-landing/">← 返回免费工具入口</a></div>
+
+
+<div class="fb">
+  <div class="t">🔒 免费版 · 基础税负自查</div>
+  <div class="d">升级会员享深度税负分析 + 一对一财税咨询</div>
+  <a class="b" href="https://sparrow528.github.io/tax-membership/" target="_blank">👉 了解会员方案</a>
+  <div class="c">宇守信投资管理咨询（北京）有限公司 · 洪淳宇</div>
 </div>
 
 <script>
-// ===== 行业列表 =====
-const INDUSTRIES = ["制造业","商贸零售","服务业","建筑业","房地产","高新技术企业"];
-
-// ===== 指标定义（含分行业标准）=====
-const INDICATORS = [
-  {id:1, dim:"增值税", name:"增值税税负率",
-   inputs:["应纳增值税额","营业收入"], unit:"%", maxScore:5,
-   calc: d => d["营业收入"]>0 ? d["应纳增值税额"]/d["营业收入"]*100 : null,
-   std: {
-     "制造业":{g:v=>v>=2.5, y:v=>v>=1.5, text:"2.5%~4%"},
-     "商贸零售":{g:v=>v>=0.8, y:v=>v>=0.5, text:"0.8%~1.5%"},
-     "服务业":{g:v=>v>=3.0, y:v=>v>=2.0, text:"3%~5%"},
-     "建筑业":{g:v=>v>=2.0, y:v=>v>=1.2, text:"2%~3.5%"},
-     "房地产":{g:v=>v>=3.5, y:v=>v>=2.5, text:"3.5%~5%"},
-     "高新技术企业":{g:v=>v>=1.5, y:v=>v>=0.8, text:"1.5%~3%"}
-   }},
-  {id:2, dim:"所得税", name:"所得税贡献率",
-   inputs:["实际缴纳所得税额","营业收入"], unit:"%", maxScore:5,
-   calc: d => d["营业收入"]>0 ? d["实际缴纳所得税额"]/d["营业收入"]*100 : null,
-   std: {
-     "制造业":{g:v=>v>=1.5, y:v=>v>=0.8, text:"1.5%~2.5%"},
-     "商贸零售":{g:v=>v>=1.0, y:v=>v>=0.5, text:"1.0%~2.0%"},
-     "服务业":{g:v=>v>=2.0, y:v=>v>=1.0, text:"2%~3%"},
-     "建筑业":{g:v=>v>=1.2, y:v=>v>=0.6, text:"1.2%~2.0%"},
-     "房地产":{g:v=>v>=2.0, y:v=>v>=1.0, text:"2%~3.5%"},
-     "高新技术企业":{g:v=>v>=0.8, y:v=>v>=0.5, text:"0.8%~1.5%"}
-   }},
-  {id:3, dim:"综合税负", name:"综合税负率",
-   inputs:["实际缴纳税费总额","营业收入"], unit:"%", maxScore:5,
-   calc: d => d["营业收入"]>0 ? d["实际缴纳税费总额"]/d["营业收入"]*100 : null,
-   std: {
-     "制造业":{g:v=>v>=4.0, y:v=>v>=2.5, text:"4%~6%"},
-     "商贸零售":{g:v=>v>=2.0, y:v=>v>=1.2, text:"2%~3.5%"},
-     "服务业":{g:v=>v>=5.0, y:v=>v>=3.0, text:"5%~7%"},
-     "建筑业":{g:v=>v>=4.0, y:v=>v>=2.5, text:"4%~5.5%"},
-     "房地产":{g:v=>v>=6.0, y:v=>v>=4.0, text:"6%~10%"},
-     "高新技术企业":{g:v=>v>=2.5, y:v=>v>=1.5, text:"2.5%~4.5%"}
-   }},
-  {id:4, dim:"盈利能力", name:"销售利润率",
-   inputs:["利润总额","营业收入"], unit:"%", maxScore:5,
-   calc: d => d["营业收入"]>0 ? d["利润总额"]/d["营业收入"]*100 : null,
-   std: {
-     "制造业":{g:v=>v>=6, y:v=>v>=3, text:"6%~10%"},
-     "商贸零售":{g:v=>v>=3, y:v=>v>=1.5, text:"3%~6%"},
-     "服务业":{g:v=>v>=10, y:v=>v>=5, text:"10%~15%"},
-     "建筑业":{g:v=>v>=5, y:v=>v>=2, text:"5%~8%"},
-     "房地产":{g:v=>v>=10, y:v=>v>=5, text:"10%~20%"},
-     "高新技术企业":{g:v=>v>=10, y:v=>v>=5, text:"10%~15%"}
-   }},
-  {id:5, dim:"盈利能力", name:"成本费用利润率",
-   inputs:["利润总额","成本费用总额"], unit:"%", maxScore:5,
-   calc: d => d["成本费用总额"]>0 ? d["利润总额"]/d["成本费用总额"]*100 : null,
-   std: {
-     "制造业":{g:v=>v>=8, y:v=>v>=4, text:"8%~12%"},
-     "商贸零售":{g:v=>v>=4, y:v=>v>=2, text:"4%~8%"},
-     "服务业":{g:v=>v>=12, y:v=>v>=6, text:"12%~18%"},
-     "建筑业":{g:v=>v>=6, y:v=>v>=3, text:"6%~10%"},
-     "房地产":{g:v=>v>=12, y:v=>v>=6, text:"12%~20%"},
-     "高新技术企业":{g:v=>v>=12, y:v=>v>=6, text:"12%~18%"}
-   }},
-  {id:6, dim:"增值税", name:"进销项匹配度",
-   inputs:["增值税进项税额","增值税销项税额"], unit:"%", maxScore:4,
-   calc: d => d["增值税销项税额"]>0 ? d["增值税进项税额"]/d["增值税销项税额"]*100 : null,
-   std: {
-     "制造业":{g:v=>v>=50&&v<=95, y:v=>v>=30&&v<=100, text:"50%~95%"},
-     "商贸零售":{g:v=>v>=60&&v<=95, y:v=>v>=40&&v<=100, text:"60%~95%"},
-     "服务业":{g:v=>v>=30&&v<=90, y:v=>v>=15&&v<=100, text:"30%~90%"},
-     "建筑业":{g:v=>v>=50&&v<=95, y:v=>v>=30&&v<=100, text:"50%~95%"},
-     "房地产":{g:v=>v>=40&&v<=90, y:v=>v>=20&&v<=100, text:"40%~90%"},
-     "高新技术企业":{g:v=>v>=30&&v<=90, y:v=>v>=15&&v<=100, text:"30%~90%"}
-   }},
-  {id:7, dim:"专项指标", name:"研发费用占比",
-   inputs:["研发费用","营业收入"], unit:"%", maxScore:3,
-   calc: d => d["营业收入"]>0 ? d["研发费用"]/d["营业收入"]*100 : null,
-   std: {
-     "制造业":{g:v=>v>=1, y:v=>v>=0.5, text:"≥1%"},
-     "商贸零售":{g:v=>v>=0.5, y:v=>v>=0.2, text:"≥0.5%"},
-     "服务业":{g:v=>v>=1, y:v=>v>=0.5, text:"≥1%"},
-     "建筑业":{g:v=>v>=0.5, y:v=>v>=0.2, text:"≥0.5%"},
-     "房地产":{g:v=>v>=0.2, y:v=>v>=0.1, text:"≥0.2%"},
-     "高新技术企业":{g:v=>v>=3, y:v=>v>=1.5, text:"≥3%"}
-   }}
+// ===== 字段定义 =====
+var FIELDS = [
+  {id:"营业收入",label:"营业收入"},
+  {id:"营业成本",label:"营业成本"},
+  {id:"利润总额",label:"利润总额"},
+  {id:"成本费用总额",label:"成本费用总额"},
+  {id:"应纳增值税额",label:"应纳增值税额"},
+  {id:"实际缴纳所得税额",label:"实际缴纳所得税额"},
+  {id:"实际缴纳税费总额",label:"实际缴纳税费总额"},
+  {id:"增值税进项税额",label:"增值税进项税额"},
+  {id:"增值税销项税额",label:"增值税销项税额"},
+  {id:"研发费用",label:"研发费用"}
 ];
 
-const DIM_ORDER = ["增值税","所得税","综合税负","盈利能力","专项指标"];
-
-// ===== 上传Excel解析 =====
-function parseExcel(input) {
-  var file = input.files[0];
-  if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      var wb = XLSX.read(e.target.result, {type:'array', codepage:936});
-      var ws = wb.Sheets[wb.SheetNames[0]];
-      var json = XLSX.utils.sheet_to_json(ws, {header:1, defval:''});
-      
-      // 将2列数据（字段名/数值）转为对象
-      var excelData = {};
-      for (var i = 0; i < json.length; i++) {
-        var row = json[i];
-        var name = String(row[1] || '').trim();
-        var val = String(row[2] || '').trim();
-        if (name && val && !isNaN(parseFloat(val))) {
-          excelData[name] = parseFloat(val);
-        }
-        // 识别行业类型
-        if (name === '行业类型' && val) {
-          excelData['行业类型'] = val;
-        }
-        // 识别企业名称
-        if (name === '企业名称' && val) {
-          excelData['企业名称'] = val;
-        }
-      }
-      
-      // 填入表单
-      var count = 0;
-      allFields.forEach(function(f) {
-        var el = document.getElementById("f_" + f);
-        if (el && excelData[f] !== undefined) {
-          el.value = excelData[f];
-          count++;
-        }
-      });
-      // 行业类型
-      var industryEl = document.getElementById("f_行业类型");
-      if (industryEl && excelData['行业类型'] && INDUSTRIES.indexOf(excelData['行业类型']) >= 0) {
-        industryEl.value = excelData['行业类型'];
-      }
-      // 企业名称
-      var nameEl = document.getElementById("f_企业名称");
-      if (nameEl && excelData['企业名称']) {
-        nameEl.value = excelData['企业名称'];
-      }
-      
-      if (count > 0) {
-        alert('✅ 已识别 ' + count + ' 个数据并自动填入！请核对后点击「查看自查报告」。');
-      } else {
-        alert('⚠️ 未能识别到数据，请确认文件格式是否正确，或手动填入数据。');
-      }
-    } catch(err) {
-      alert('⚠️ 文件解析失败：' + err.message + '\n请确认上传的是正确的Excel文件。');
-    }
-  };
-  reader.readAsArrayBuffer(file);
-}
-
-// ===== 所有字段 =====
-const allFields = [...new Set(INDICATORS.flatMap(ind => ind.inputs))];
-document.getElementById("fieldCount").textContent = INDUSTRIES.length > 0 ? (allFields.length + 2) : allFields.length; // +2 for 企业名+行业
-
-// ===== 字段分组 =====
-const fieldGroups = {
-  "企业信息（先选行业）": ["企业名称","行业类型"],
-  "收入与成本": ["营业收入","营业成本","成本费用总额"],
-  "利润与税费": ["利润总额","应纳增值税额","实际缴纳所得税额","实际缴纳税费总额"],
-  "进销项与专项": ["增值税进项税额","增值税销项税额","研发费用"]
+// ===== 行业标准 =====
+var STD = {
+  "制造业":{vz:{g:2.5,y:1.5,t:"2.5%~4%"},sz:{g:1.5,y:0.8,t:"1.5%~2.5%"},zf:{g:4,y:2.5,t:"4%~6%"},xl:{g:6,y:3,t:"6%~10%"},cb:{g:8,y:4,t:"8%~12%"},jx:{g:[50,95],y:[30,100],t:"50%~95%"},yf:{g:1,y:0.5,t:"≥1%"}},
+  "商贸零售":{vz:{g:0.8,y:0.5,t:"0.8%~1.5%"},sz:{g:1,y:0.5,t:"1%~2%"},zf:{g:2,y:1.2,t:"2%~3.5%"},xl:{g:3,y:1.5,t:"3%~6%"},cb:{g:4,y:2,t:"4%~8%"},jx:{g:[60,95],y:[40,100],t:"60%~95%"},yf:{g:0.5,y:0.2,t:"≥0.5%"}},
+  "服务业":{vz:{g:3,y:2,t:"3%~5%"},sz:{g:2,y:1,t:"2%~3%"},zf:{g:5,y:3,t:"5%~7%"},xl:{g:10,y:5,t:"10%~15%"},cb:{g:12,y:6,t:"12%~18%"},jx:{g:[30,90],y:[15,100],t:"30%~90%"},yf:{g:1,y:0.5,t:"≥1%"}},
+  "建筑业":{vz:{g:2,y:1.2,t:"2%~3.5%"},sz:{g:1.2,y:0.6,t:"1.2%~2%"},zf:{g:4,y:2.5,t:"4%~5.5%"},xl:{g:5,y:2,t:"5%~8%"},cb:{g:6,y:3,t:"6%~10%"},jx:{g:[50,95],y:[30,100],t:"50%~95%"},yf:{g:0.5,y:0.2,t:"≥0.5%"}},
+  "房地产":{vz:{g:3.5,y:2.5,t:"3.5%~5%"},sz:{g:2,y:1,t:"2%~3.5%"},zf:{g:6,y:4,t:"6%~10%"},xl:{g:10,y:5,t:"10%~20%"},cb:{g:12,y:6,t:"12%~20%"},jx:{g:[40,90],y:[20,100],t:"40%~90%"},yf:{g:0.2,y:0.1,t:"≥0.2%"}},
+  "高新技术企业":{vz:{g:1.5,y:0.8,t:"1.5%~3%"},sz:{g:0.8,y:0.5,t:"0.8%~1.5%"},zf:{g:2.5,y:1.5,t:"2.5%~4.5%"},xl:{g:10,y:5,t:"10%~15%"},cb:{g:12,y:6,t:"12%~18%"},jx:{g:[30,90],y:[15,100],t:"30%~90%"},yf:{g:3,y:1.5,t:"≥3%"}}
 };
 
-// ===== 构建录入表单 =====
-function buildInputForm() {
-  const container = document.getElementById("inputGroups");
-  container.innerHTML = "";
-  for (const [groupName, fields] of Object.entries(fieldGroups)) {
-    const div = document.createElement("div");
-    div.className = "input-group";
-    let rows = fields.map(f => {
-      if (f === "行业类型") {
-        return `<div class="form-row full"><label>${f}</label>` +
-          `<select id="f_行业类型" onchange="autoCalc=false" style="max-width:100%">` +
-          `<option value="">-- 请选择 --</option>` +
-          INDUSTRIES.map(i => `<option value="${i}">${i}</option>`).join("") +
-          `</select></div>`;
-      } else if (f === "企业名称") {
-        return `<div class="form-row full"><label>${f}</label><input type="text" id="f_企业名称" placeholder="选填" style="text-align:left"></div>`;
-      } else {
-        return `<div class="form-row"><label>${f}</label><input type="number" step="any" id="f_${f}" oninput="autoCalc=false"></div>`;
-      }
-    }).join("");
-    div.innerHTML = `<div class="input-group-title">${groupName}</div><div class="input-grid">${rows}</div>`;
-    container.appendChild(div);
-  }
-  // 默认选择制造业
-  document.getElementById("f_行业类型").value = "制造业";
+// ===== 指标 =====
+var IND = [
+  {id:"vz",dim:"增值税",name:"增值税税负率",max:5,calc:function(d){return d.营业收入>0?d.应纳增值税额/d.营业收入*100:null;}},
+  {id:"sz",dim:"所得税",name:"所得税贡献率",max:5,calc:function(d){return d.营业收入>0?d.实际缴纳所得税额/d.营业收入*100:null;}},
+  {id:"zf",dim:"综合税负",name:"综合税负率",max:5,calc:function(d){return d.营业收入>0?d.实际缴纳税费总额/d.营业收入*100:null;}},
+  {id:"xl",dim:"盈利能力",name:"销售利润率",max:5,calc:function(d){return d.营业收入>0?d.利润总额/d.营业收入*100:null;}},
+  {id:"cb",dim:"盈利能力",name:"成本费用利润率",max:5,calc:function(d){return d.成本费用总额>0?d.利润总额/d.成本费用总额*100:null;}},
+  {id:"jx",dim:"增值税",name:"进销项匹配度",max:4,calc:function(d){return d.增值税销项税额>0?d.增值税进项税额/d.增值税销项税额*100:null;}},
+  {id:"yf",dim:"专项指标",name:"研发费用占比",max:3,calc:function(d){return d.营业收入>0?d.研发费用/d.营业收入*100:null;}}
+];
+var DIMS = ["增值税","所得税","综合税负","盈利能力","专项指标"];
+
+// ===== 构建表单 =====
+function buildForm(){
+  var h="";
+  FIELDS.forEach(function(f){
+    h+='<div class="frr"><label>'+f.label+'</label><input type="number" step="any" id="f_'+f.id+'" placeholder="0"></div>';
+  });
+  document.getElementById("inputGrid").innerHTML=h;
 }
 
-// ===== 读取数据 =====
-function readData() {
-  const d = {};
-  for (const f of allFields) {
-    const el = document.getElementById("f_"+f);
-    d[f] = el && el.value ? parseFloat(el.value) : 0;
-  }
-  d["行业类型"] = document.getElementById("f_行业类型")?.value || "";
-  d["企业名称"] = document.getElementById("f_企业名称")?.value || "";
+// ===== 读取 =====
+function read(){
+  var d={};
+  FIELDS.forEach(function(f){var e=document.getElementById("f_"+f.id);d[f.id]=e&&e.value?parseFloat(e.value):0;});
+  d.行业=document.getElementById("f_industry").value;
+  d.名称=document.getElementById("f_name").value;
   return d;
 }
 
-// ===== 主计算 =====
-function calcAndShow() {
-  const data = readData();
-  const industry = data["行业类型"];
-
-  if (!industry) {
-    alert("请先选择行业类型！");
-    switchTab("input");
-    return;
-  }
-
-  const filled = allFields.filter(f => data[f] && data[f] !== 0);
-  if (filled.length < 2) {
-    alert("请至少填写2个以上的税务数据！");
-    switchTab("input");
-    return;
-  }
-
-  // 计算每个指标
-  const results = INDICATORS.map(ind => {
-    let val = null;
-    try { val = ind.calc(data); } catch(e) {}
-    let score = 0, status = "未计算";
-    const s = ind.std[industry];
-    const stdText = s ? s.text : "—";
-
-    if (val !== null && !isNaN(val) && s) {
-      if (s.g(val)) { score = ind.maxScore; status = "green"; }
-      else if (s.y(val)) { score = Math.round(ind.maxScore * 0.6 * 10) / 10; status = "yellow"; }
-      else { score = Math.round(ind.maxScore * 0.2 * 10) / 10; status = "red"; }
-    }
-    return { ...ind, val, score, status, stdText };
-  });
-
-  // 维度汇总
-  const dimScores = {};
-  results.forEach(r => {
-    if (!dimScores[r.dim]) dimScores[r.dim] = {actual:0, max:0};
-    dimScores[r.dim].actual += r.score;
-    dimScores[r.dim].max += r.maxScore;
-  });
-
-  const totalScore = Object.values(dimScores).reduce((s, d) => s + d.actual, 0);
-  const totalMax = Object.values(dimScores).reduce((s, d) => s + d.max, 0);
-  const rate = totalMax > 0 ? Math.round(totalScore / totalMax * 100) : 0;
-
-  // 评级
-  let grade, suggestion;
-  if (rate >= 90) { grade = "AAA 税负状况优秀"; suggestion = "🎉 税负健康，继续保持！"; }
-  else if (rate >= 80) { grade = "AA 税负良好"; suggestion = "👍 整体税负合理，定期关注即可"; }
-  else if (rate >= 70) { grade = "A 基本正常"; suggestion = "📌 基本正常，部分指标可优化"; }
-  else if (rate >= 60) { grade = "BBB 存在一定风险"; suggestion = "⚠️ 税负指标需关注，建议自查"; }
-  else if (rate >= 50) { grade = "BB 风险较高"; suggestion = "🔴 税负异常较多，建议咨询专家"; }
-  else { grade = "B 风险很高"; suggestion = "🔴 税负风险高，强烈建议立即诊断！"; }
-
-  // 行业信息显示
-  const indInfo = `行业：${industry}`;
-
-  // 渲染总分卡
-  document.getElementById("scoreCard").innerHTML =
-    `<div class="label">${indInfo} · 综合评分</div>
-     <div class="score">${totalScore}/${totalMax}</div>
-     <div class="grade">${grade}</div>
-     <div class="suggestion">${suggestion}</div>`;
-
-  // 维度卡片
-  const dimGrid = document.getElementById("dimGrid");
-  dimGrid.innerHTML = DIM_ORDER.map(dim => {
-    const s = dimScores[dim] || {actual:0, max:0};
-    const r = s.max > 0 ? Math.round(s.actual/s.max*100) : 0;
-    let color = "#16a34a";
-    if (r < 60) color = "#dc2626";
-    else if (r < 80) color = "#d97706";
-    return `<div class="dim-card">
-      <div class="name">${dim}</div>
-      <div class="score" style="color:${color}">${s.actual}</div>
-      <div class="max">/ ${s.max} 分</div>
-      <div class="rate">得分率 ${r}%</div>
-    </div>`;
-  }).join("");
-
-  // 指标表格
-  const table = document.getElementById("indicatorTable");
-  table.style.display = "block";
-  const rows = document.getElementById("indicatorRows");
-  rows.innerHTML = results.map(r => {
-    const valStr = r.val !== null && !isNaN(r.val) ? (r.unit === "%" ? r.val.toFixed(1)+"%" : r.val.toFixed(2)) : "—";
-    const statusMap = {green: "🟢 正常", yellow: "🟡 关注", red: "🔴 预警"};
-    const clsMap = {green: "status-green", yellow: "status-yellow", red: "status-red"};
-    return `<div class="table-row">
-      <span class="col-name">${r.name}</span>
-      <span class="col-std">${r.stdText}</span>
-      <span class="col-value">${valStr}</span>
-      <span class="col-score">${r.score > 0 ? r.score : "—"}</span>
-      <span class="col-status ${clsMap[r.status]||''}">${statusMap[r.status]||"⏳"}</span>
-    </div>`;
-  }).join("");
-
-  drawRadarChart(dimScores);
-  switchTab("report");
+// ===== 评分 =====
+function scoreVal(v,s){
+  if(v===null||isNaN(v)||!s) return {s:0,st:"—"};
+  if(s.g instanceof Array){if(v>=s.g[0]&&v<=s.g[1]) return {s:1,st:"green"};if(v>=s.y[0]&&v<=s.y[1]) return {s:0.6,st:"yellow"};return {s:0.2,st:"red"};}
+  if(v>=s.g) return {s:1,st:"green"};if(v>=s.y) return {s:0.6,st:"yellow"};return {s:0.2,st:"red"};
 }
 
-// ===== 雷达图 =====
-function drawRadarChart(dimScores) {
-  var CA = document.getElementById("radarChart");
-  if (!CA) return;
-  var CX = CA.getContext("2d");
-  var W = 400, H = 400, cx = 200, cy = 200, R = 150;
-  var LB = DIM_ORDER;
-  var n = LB.length, AS = 2 * Math.PI / n;
-  var DA = LB.map(function(D) {
-    var S = dimScores[D] || {actual:0, max:1};
-    return S.max > 0 ? Math.round(S.actual / S.max * 100) : 0;
+function dimGrade(p){if(p>=90)return"AAA";if(p>=80)return"AA";if(p>=70)return"A";if(p>=60)return"BBB";return"B";}
+
+// ===== 计算 =====
+function calc(){
+  var d=read();
+  if(!d.行业){alert("请先选择行业类型");st("input");return;}
+  var s=STD[d.行业];
+  var results=IND.map(function(ind){
+    var v=ind.calc(d);
+    var r=scoreVal(v,s[ind.id]);
+    var sc=Math.round(ind.max*(r.s||0)*10)/10;
+    return{name:ind.name,dim:ind.dim,val:v,score:sc,max:ind.max,status:r.st,std:s[ind.id]?s[ind.id].t:"—"};
   });
-  CX.clearRect(0, 0, W, H);
-  for (var r = 1; r <= 5; r++) {
-    var RR = R * r / 5; CX.beginPath();
-    for (var i = 0; i <= n; i++) {
-      var A = -Math.PI/2 + i*AS;
-      var X = cx + RR*Math.cos(A), Y = cy + RR*Math.sin(A);
-      i === 0 ? CX.moveTo(X,Y) : CX.lineTo(X,Y);
-    }
-    CX.strokeStyle = r === 5 ? "#d0d0d0" : "#e8e8e8";
-    CX.lineWidth = r === 5 ? 1 : 0.5; CX.stroke();
-  }
-  for (var i = 0; i < n; i++) {
-    var A = -Math.PI/2 + i*AS; CX.beginPath();
-    CX.moveTo(cx, cy); CX.lineTo(cx + R*Math.cos(A), cy + R*Math.sin(A));
-    CX.strokeStyle = "#d0d0d0"; CX.lineWidth = 0.5; CX.stroke();
-  }
-  CX.beginPath();
-  for (var i = 0; i <= n; i++) {
-    var id = i % n, A = -Math.PI/2 + id*AS, RR = R * DA[id] / 100;
-    var X = cx + RR*Math.cos(A), Y = cy + RR*Math.sin(A);
-    i === 0 ? CX.moveTo(X,Y) : CX.lineTo(X,Y);
-  }
-  CX.closePath();
-  CX.fillStyle = "rgba(6,95,70,0.15)"; CX.fill();
-  CX.strokeStyle = "#065f46"; CX.lineWidth = 2; CX.stroke();
-  for (var i = 0; i < n; i++) {
-    var A = -Math.PI/2 + i*AS, RR = R * DA[i] / 100;
-    var X = cx + RR*Math.cos(A), Y = cy + RR*Math.sin(A);
-    CX.beginPath(); CX.arc(X, Y, 4, 0, 2*Math.PI);
-    CX.fillStyle = "#065f46"; CX.fill();
-  }
-  CX.font = "12px -apple-system,'PingFang SC','Microsoft YaHei',sans-serif";
-  CX.fillStyle = "#333"; CX.textAlign = "center"; CX.textBaseline = "middle";
-  for (var i = 0; i < n; i++) {
-    var A = -Math.PI/2 + i*AS;
-    CX.fillText(LB[i], cx+(R+25)*Math.cos(A), cy+(R+25)*Math.sin(A));
-    CX.font = "11px -apple-system,'PingFang SC','Microsoft YaHei',sans-serif";
-    CX.fillStyle = "#065f46";
-    CX.fillText(DA[i]+"分", cx+(R+40)*Math.cos(A), cy+(R+40)*Math.sin(A));
-    CX.font = "12px -apple-system,'PingFang SC','Microsoft YaHei',sans-serif";
-  }
-  document.getElementById("radarSection").style.display = "block";
+  var ds={};
+  results.forEach(function(r){if(!ds[r.dim])ds[r.dim]={a:0,m:0};ds[r.dim].a+=r.score;ds[r.dim].m+=r.max;});
+  var tot=0,tmax=0;
+  DIMS.forEach(function(dim){var x=ds[dim]||{a:0,m:0};tot+=x.a;tmax+=x.m;});
+  var rate=tmax>0?Math.round(tot/tmax*100):0,g="",sg="";
+  if(rate>=90){g="AAA 税负优秀";sg="🎉 税负健康，继续保持！";}else if(rate>=80){g="AA 税负良好";sg="👍 整体税负合理";}else if(rate>=70){g="A 基本正常";sg="📌 部分指标可优化";}else if(rate>=60){g="BBB 存在风险";sg="⚠️ 建议自查";}else{g="B 风险较高";sg="🔴 建议咨询专家";}
+  document.getElementById("scoreCard").innerHTML='<div class="lb">'+d.行业+' · 综合评分</div><div class="n">'+tot+'/'+tmax+'</div><div class="g">'+g+'</div><div class="sg">'+sg+'</div>';
+  var dg=document.getElementById("dimGrid");
+  dg.innerHTML=DIMS.map(function(dim){
+    var x=ds[dim]||{a:0,m:0},p=x.m>0?Math.round(x.a/x.m*100):0,dg2=dimGrade(p),cl="",c2="";
+    if(p<60){cl="red";c2="#dc2626";}else if(p<80){cl="yel";c2="#d97706";}else{cl="grn";c2="#16a34a";}
+    return'<div class="dc"><div class="dn">'+dim+'</div><div class="ds" style="color:'+c2+'">'+x.a+'</div><div class="dm">/ '+x.m+' 分</div><div class="dr '+cl+'">'+dg2+' · '+p+'%</div></div>';
+  }).join("");
+  var rows=document.getElementById("indicatorRows"),sm={green:"🟢 正常",yellow:"🟡 关注",red:"🔴 预警"},cm={green:"st-g",yellow:"st-y",red:"st-r"};
+  rows.innerHTML=results.map(function(r){
+    var vs=r.val!==null&&!isNaN(r.val)?r.val.toFixed(1)+"%":"—";
+    return'<div class="tr"><span>'+r.name+'</span><span style="font-size:10px;color:#999">'+r.std+'</span><span>'+vs+'</span><span>'+(r.score>0?r.score:"—")+'</span><span class="'+(cm[r.status]||'')+'">'+(sm[r.status]||"⏳")+'</span></div>';
+  }).join("");
+  st("report");
 }
 
 // ===== 分享 =====
-function shareResult() {
-  const data = readData();
-  if (!data["行业类型"]) { alert("请先选择行业类型！"); return; }
-  const filled = allFields.filter(f => data[f] && data[f] !== 0);
-  if (filled.length < 2) { alert("请先填数据！"); return; }
-
-  // 重新计算
-  const industry = data["行业类型"];
-  const results = INDICATORS.map(ind => {
-    let val = null;
-    try { val = ind.calc(data); } catch(e) {}
-    let score = 0, status = "未计算";
-    const s = ind.std[industry];
-    const stdText = s ? s.text : "—";
-    if (val !== null && !isNaN(val) && s) {
-      if (s.g(val)) { score = ind.maxScore; status = "green"; }
-      else if (s.y(val)) { score = Math.round(ind.maxScore * 0.6 * 10) / 10; status = "yellow"; }
-      else { score = Math.round(ind.maxScore * 0.2 * 10) / 10; status = "red"; }
-    }
-    return { ...ind, val, score, status, stdText };
+function shareResult(){
+  var d=read();
+  if(!d.行业){alert("请先选择行业");return;}
+  var s=STD[d.行业];
+  var results=IND.map(function(ind){
+    var v=ind.calc(d);var r=scoreVal(v,s[ind.id]);var sc=Math.round(ind.max*(r.s||0)*10)/10;
+    return{name:ind.name,dim:ind.dim,val:v,score:sc,max:ind.max,status:r.st,std:s[ind.id]?s[ind.id].t:"—"};
   });
-  const dimScores = {};
-  results.forEach(r => {
-    if (!dimScores[r.dim]) dimScores[r.dim] = {actual:0, max:0};
-    dimScores[r.dim].actual += r.score;
-    dimScores[r.dim].max += r.maxScore;
-  });
-  const totalScore = Object.values(dimScores).reduce((s, d) => s + d.actual, 0);
-  const totalMax = Object.values(dimScores).reduce((s, d) => s + d.max, 0);
-  const rate = totalMax > 0 ? Math.round(totalScore / totalMax * 100) : 0;
-
-  let grade, suggestion;
-  if (rate >= 90) { grade = "AAA 税负状况优秀"; suggestion = "🎉 税负健康，继续保持！"; }
-  else if (rate >= 80) { grade = "AA 税负良好"; suggestion = "👍 整体税负合理，定期关注即可"; }
-  else if (rate >= 70) { grade = "A 基本正常"; suggestion = "📌 基本正常，部分指标可优化"; }
-  else if (rate >= 60) { grade = "BBB 存在一定风险"; suggestion = "⚠️ 税负指标需关注，建议自查"; }
-  else if (rate >= 50) { grade = "BB 风险较高"; suggestion = "🔴 税负异常较多，建议咨询专家"; }
-  else { grade = "B 风险很高"; suggestion = "🔴 税负风险高，强烈建议立即诊断！"; }
-
-  const name = data["企业名称"] || "未命名企业";
-  const statusColor = {green:["#e6f7e6","#16a34a"], yellow:["#fef9e7","#d97706"], red:["#feeaea","#dc2626"]};
-  const statusMap = {green: "🟢 正常", yellow: "🟡 关注", red: "🔴 预警"};
-
-  let sh = '<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\">';
-  sh += '<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">';
-  sh += '<title>企业税负自查报告 - 宇守信咨询</title><style>';
-  sh += '*{margin:0;padding:0;box-sizing:border-box}';
-  sh += 'body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;padding:0 0 30px}';
-  sh += '.report-header{background:linear-gradient(135deg,#065f46,#059669);color:white;padding:28px 20px 24px;text-align:center}';
-  sh += '.report-header h1{font-size:20px;font-weight:700;margin-bottom:4px}';
-  sh += '.report-header .sub{font-size:12px;opacity:.8}';
-  sh += '.report-header .badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:10px;margin-top:6px}';
-  sh += '.content{padding:14px;max-width:580px;margin:0 auto}';
-  sh += '.score-card{background:linear-gradient(135deg,#065f46,#059669);border-radius:16px;padding:24px 20px;text-align:center;color:white;margin-bottom:16px}';
-  sh += '.score-card .label{font-size:12px;opacity:.8}';
-  sh += '.score-card .num{font-size:38px;font-weight:800;margin:4px 0}';
-  sh += '.score-card .grade{font-size:15px;font-weight:600;margin-bottom:2px}';
-  sh += '.score-card .sug{font-size:12px;opacity:.9;line-height:1.5}';
-  sh += '.dim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}';
-  sh += '.dim-card{background:white;border-radius:12px;padding:14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}';
-  sh += '.dim-card .dn{font-size:11px;color:#888;margin-bottom:3px}';
-  sh += '.dim-card .ds{font-size:20px;font-weight:700}';
-  sh += '.dim-card .dm{font-size:11px;color:#999;margin-top:2px}';
-  sh += '.dim-card .dr{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;margin-top:4px}';
-  sh += '.sec-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:10px}';
-  sh += '.sec-title{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0f0f0;font-size:13px;font-weight:700;color:#065f46}';
-  sh += '.sec-row{display:flex;align-items:center;padding:8px 14px;border-bottom:1px solid #f8f8f8}';
-  sh += '.sec-row:last-child{border-bottom:none}';
-  sh += '.sec-row .info{flex:1}';
-  sh += '.sec-row .iname{font-size:13px;font-weight:600;color:#333}';
-  sh += '.sec-row .inote{font-size:10px;color:#999;margin-top:1px}';
-  sh += '.sec-row .ival{text-align:right;margin-left:8px;min-width:80px}';
-  sh += '.sec-row .inum{font-size:13px;font-weight:700;color:#333}';
-  sh += '.sec-row .istd{font-size:10px;color:#999}';
-  sh += '.sec-row .itag{padding:3px 8px;border-radius:10px;font-size:10px;font-weight:600;margin-left:8px;white-space:nowrap}';
-  sh += '.marketing{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);border-radius:14px;padding:22px 18px;text-align:center;color:white;margin:16px 0}';
-  sh += '.marketing h3{font-size:16px;font-weight:700;margin-bottom:4px}';
-  sh += '.marketing p{font-size:12px;opacity:.8;line-height:1.6;margin-bottom:10px}';
-  sh += '.marketing .btn{display:inline-block;background:white;color:#302b63;padding:9px 24px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none}';
-  sh += '.footer{text-align:center;padding:12px;font-size:10px;color:#999;line-height:1.6}';
-  sh += '@media (max-width:400px){.dim-grid{grid-template-columns:1fr}}';
-  sh += '
-</head><body>';
-
-  // 头部
-  sh += '<div class=\"report-header\">';
-  sh += '<h1>📋 企业税负自查报告</h1>';
-  sh += '<div class=\"sub\">'+name+' · '+industry+' · 宇守信咨询 · 洪淳宇</div>';
-  sh += '<div class=\"badge\">报告生成时间：'+new Date().toLocaleString()+'</div></div>';
-
-  sh += '<div class=\"content\">';
-  // 总分
-  sh += '<div class=\"score-card\">';
-  sh += '<div class=\"label\">'+industry+' · 综合评分</div>';
-  sh += '<div class=\"num\">'+totalScore+'/'+totalMax+'</div>';
-  sh += '<div class=\"grade\">'+grade+'</div>';
-  sh += '<div class=\"sug\">'+suggestion+'</div></div>';
-
-  // 维度卡片
-  sh += '<div style=\"font-size:14px;font-weight:700;color:#065f46;margin-bottom:10px;\">📊 五大维度评分</div>';
-  sh += '<div class=\"dim-grid\">';
-  DIM_ORDER.forEach(function(dim) {
-    var s = dimScores[dim] || {actual:0, max:0};
-    var r = s.max > 0 ? Math.round(s.actual/s.max*100) : 0;
-    var c = "#16a34a", bg = "#e6f7e6";
-    if (r < 60) { c = "#dc2626"; bg = "#feeaea"; }
-    else if (r < 80) { c = "#d97706"; bg = "#fef9e7"; }
-    sh += '<div class=\"dim-card\">';
-    sh += '<div class=\"dn\">'+dim+'</div>';
-    sh += '<div class=\"ds\" style=\"color:'+c+'\">'+s.actual+'</div>';
-    sh += '<div class=\"dm\">/ '+s.max+' 分</div>';
-    sh += '<div class=\"dr\" style=\"background:'+bg+';color:'+c+'\">得分率 '+r+'%</div></div>';
-  });
-  sh += '</div>';
-
-  // 指标明细
-  sh += '<div style=\"font-size:14px;font-weight:700;color:#065f46;margin-bottom:10px;\">📋 指标明细</div>';
-  var dimGroups = {};
-  results.forEach(function(r) {
-    if (!dimGroups[r.dim]) dimGroups[r.dim] = [];
-    dimGroups[r.dim].push(r);
-  });
-  DIM_ORDER.forEach(function(dim) {
-    if (!dimGroups[dim] || dimGroups[dim].length === 0) return;
-    var items = dimGroups[dim];
-    var dt = items.reduce(function(s,r){return s+r.score;}, 0);
-    var dm = items.reduce(function(s,r){return s+r.maxScore;}, 0);
-    var dr = dm > 0 ? Math.round(dt/dm*100) : 0;
-    var dc = '#16a34a';
-    if (dr < 60) dc = '#dc2626';
-    else if (dr < 80) dc = '#d97706';
-
-    sh += '<div class=\"sec-card\">';
-    sh += '<div class=\"sec-title\"><span>'+dim+'</span><span style=\"color:'+dc+'\">'+dt+'/'+dm+' 分 ('+dr+'%)</span></div>';
-
-    items.forEach(function(r) {
-      var valStr = r.val !== null && !isNaN(r.val) ? (r.unit === "%" ? r.val.toFixed(1)+"%" : r.val.toFixed(2)) : "—";
-      var sc = statusColor[r.status] || ["#f0f0f0","#999"];
-      sh += '<div class=\"sec-row\">';
-      sh += '<div class=\"info\"><div class=\"iname\">'+r.name+'</div><div class=\"inote\">标准：'+r.stdText+'</div></div>';
-      sh += '<div class=\"ival\"><div class=\"inum\">'+valStr+'</div><div class=\"istd\">'+r.score+'分</div></div>';
-      sh += '<div class=\"itag\" style=\"background:'+sc[0]+';color:'+sc[1]+'\">'+statusMap[r.status]+'</div></div>';
-    });
-    sh += '</div>';
-  });
-
-  // 会员营销
-  sh += '<div class=\"marketing\">';
-  sh += '<h3>🔒 免费版 · 基础税负自查</h3>';
-  sh += '<p>升级会员享深度税负分析报告 + 定制优化建议 + 一对一专家咨询</p>';
-  sh += '<a class=\"btn\" href=\"https://sparrow528.github.io/tax-membership/\" target=\"_blank\">👉 了解会员方案</a></div>';
-
-  // 联系方式
-  sh += '<div style=\"background:white;border-radius:12px;padding:14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px;\">';
-  sh += '<div style=\"font-size:13px;font-weight:700;color:#065f46;margin-bottom:4px;\">👤 洪淳宇 · 您身边的财税专家</div>';
-  sh += '<div style=\"font-size:11px;color:#666;line-height:1.6;\">为企业提供专业税负分析、税务合规、财税咨询服务</div>';
-  sh += '<div style=\"font-size:11px;color:#999;margin-top:6px;\">📞 186-0129-4989</div></div>';
-
-  // 免责
-  sh += '<div style=\"font-size:10px;color:#bbb;text-align:center;line-height:1.6;margin-bottom:10px;\">';
-  sh += '* 本报告由企业税负自查工具自动生成，仅供初步参考，不构成专业税务建议。<br>';
-  sh += '* 宇守信投资管理咨询（北京）有限公司 · 洪淳宇</div>';
-  sh += '</div></body></html>';
-
-  var win = window.open('', '_blank');
-  win.document.write(sh);
-  win.document.close();
+  var ds={};results.forEach(function(r){if(!ds[r.dim])ds[r.dim]={a:0,m:0};ds[r.dim].a+=r.score;ds[r.dim].m+=r.max;});
+  var tot=0,tmax=0;DIMS.forEach(function(dim){var x=ds[dim]||{a:0,m:0};tot+=x.a;tmax+=x.m;});
+  var rate=tmax>0?Math.round(tot/tmax*100):0,g="",sg="";
+  if(rate>=90){g="AAA 税负优秀";sg="🎉 税负健康，继续保持！";}else if(rate>=80){g="AA 税负良好";sg="👍 整体税负合理";}else if(rate>=70){g="A 基本正常";sg="📌 部分指标可优化";}else if(rate>=60){g="BBB 存在风险";sg="⚠️ 建议自查";}else{g="B 风险较高";sg="🔴 建议咨询专家";}
+  var sc2={green:["#e6f7e6","#16a34a"],yellow:["#fef9e7","#d97706"],red:["#feeaea","#dc2626"]},sm2={green:"🟢 正常",yellow:"🟡 关注",red:"🔴 预警"};
+  var h='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>企业税负自查报告 - 宇守信咨询</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;padding:0 0 30px}.rh{background:linear-gradient(135deg,#065f46,#059669);color:#fff;padding:24px 18px 20px;text-align:center}.rh h1{font-size:18px;font-weight:700}.rh .s{font-size:11px;opacity:.8;margin-top:4px}.rh .tm{font-size:10px;opacity:.6;margin-top:4px}.ct{padding:12px;max-width:580px;margin:0 auto}.sc{background:linear-gradient(135deg,#065f46,#059669);border-radius:14px;padding:22px 18px;text-align:center;color:#fff;margin-bottom:14px}.sc .lb{font-size:11px;opacity:.8}.sc .n{font-size:34px;font-weight:800;margin:4px 0}.sc .g{font-size:14px;font-weight:600}.sc .sg{font-size:11px;opacity:.9;margin-top:4px}.dg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}.dc{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}.dc .dn{font-size:10px;color:#999}.dc .ds{font-size:18px;font-weight:700}.dc .dm{font-size:10px;color:#bbb;margin-top:2px}.dc .dr{display:inline-block;padding:2px 8px;border-radius:6px;font-size:9px;margin-top:3px}.sc2{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:10px}.st{padding:8px 12px;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0;font-size:12px;font-weight:700;color:#065f46}.sr{display:flex;align-items:center;padding:7px 12px;border-bottom:1px solid #f8f8f8;font-size:11px}.sr .in{flex:1;font-weight:600;color:#333}.sr .iv{text-align:right;margin:0 6px;min-width:60px}.sr .in2{font-size:10px;color:#999}.sr .it{padding:2px 6px;border-radius:6px;font-size:9px;font-weight:600;white-space:nowrap}.mk{background:linear-gradient(135deg,#065f46,#059669);border-radius:12px;padding:18px 16px;text-align:center;color:#fff;margin:14px 0}.mk h3{font-size:14px;font-weight:700}.mk p{font-size:11px;opacity:.8;line-height:1.6;margin-bottom:8px}.mk .btn{display:inline-block;background:#fff;color:#065f46;padding:7px 20px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none}.ft{text-align:center;padding:10px;font-size:9px;color:#bbb;line-height:1.6}@media(max-width:400px){.dg{grid-template-columns:1fr 1fr}}</style></head><body><div class="rh"><h1>📋 企业税负自查报告</h1><div class="s">'+(d.名称||"企业")+' · '+d.行业+' · 宇守信咨询 · 洪淳宇</div><div class="tm">'+new Date().toLocaleString()+'</div></div><div class="ct"><div class="sc"><div class="lb">'+d.行业+' · 综合评分</div><div class="n">'+tot+'/'+tmax+'</div><div class="g">'+g+'</div><div class="sg">'+sg+'</div></div>';
+  h+='<div style="font-size:13px;font-weight:700;color:#065f46;margin-bottom:8px">📊 五大维度评分</div><div class="dg">';
+  DIMS.forEach(function(dim){var x=ds[dim]||{a:0,m:0},p=x.m>0?Math.round(x.a/x.m*100):0,c="#16a34a",bg="#e6f7e6";if(p<60){c="#dc2626";bg="#feeaea";}else if(p<80){c="#d97706";bg="#fef9e7";}h+='<div class="dc"><div class="dn">'+dim+'</div><div class="ds" style="color:'+c+'">'+x.a+'</div><div class="dm">/ '+x.m+' 分</div><div class="dr" style="background:'+bg+';color:'+c+'">'+dimGrade(p)+' · '+p+'%</div></div>';});
+  h+='</div><div style="font-size:13px;font-weight:700;color:#065f46;margin-bottom:8px">📋 指标明细</div>';
+  var dg2={};results.forEach(function(r){if(!dg2[r.dim])dg2[r.dim]=[];dg2[r.dim].push(r);});
+  DIMS.forEach(function(dim){var items=dg2[dim]||[];if(!items.length)return;var dt=items.reduce(function(s,r){return s+r.score;},0),dm=items.reduce(function(s,r){return s+r.max;},0),p2=dm>0?Math.round(dt/dm*100):0,dc="#16a34a";if(p2<60)dc="#dc2626";else if(p2<80)dc="#d97706";h+='<div class="sc2"><div class="st"><span>'+dim+'</span><span style="color:'+dc+'">'+dt+'/'+dm+' 分 ('+p2+'%)</span></div>';items.forEach(function(r){var vs=r.val!==null&&!isNaN(r.val)?r.val.toFixed(1)+"%":"—",c2=sc2[r.status]||["#f0f0f0","#999"];h+='<div class="sr"><div><div class="in">'+r.name+'</div><div class="in2">标准：'+r.std+'</div></div><div class="iv"><div>'+vs+'</div><div class="in2">'+r.score+'分</div></div><span class="it" style="background:'+c2[0]+';color:'+c2[1]+'">'+(sm2[r.status]||"")+'</span></div>';});h+='</div>';});
+  h+='<div class="mk"><h3>🔒 免费版 · 基础税负自查</h3><p>升级会员享深度税负分析 + 一对一财税咨询</p><a class="btn" href="https://sparrow528.github.io/tax-membership/" target="_blank">👉 了解会员方案</a></div><div style="background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:12px"><div style="font-size:12px;font-weight:700;color:#065f46;margin-bottom:2px">👤 洪淳宇 · 您身边的财税专家</div><div style="font-size:10px;color:#666">专业税负分析·税务合规·财税咨询</div><div style="font-size:10px;color:#999;margin-top:4px">📞 18601294989</div></div><div style="font-size:9px;color:#bbb;text-align:center;line-height:1.6">* 本报告由自查工具自动生成，仅供初步参考。<br>* 宇守信投资管理咨询（北京）有限公司 · 洪淳宇</div></div></body></html>';
+  var w=window.open("","_blank");w.document.write(h);w.document.close();
 }
 
-// ===== 清空 =====
-function resetAll() {
-  if (!confirm("确定要清空所有已填数据吗？")) return;
-  allFields.forEach(f => {
-    const el = document.getElementById("f_"+f);
-    if (el) el.value = "";
-  });
-  document.getElementById("f_行业类型").value = "制造业";
-  document.getElementById("f_企业名称").value = "";
-}
-
-// ===== Tab切换 =====
-function switchTab(name) {
-  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
-  document.querySelectorAll(".panel").forEach(p => p.classList.toggle("active", p.id === "panel-"+name));
-  window.scrollTo(0, 0);
-}
-
-// ===== 初始化 =====
-buildInputForm();
-
-
+function resetAll(){FIELDS.forEach(function(f){var e=document.getElementById("f_"+f.id);if(e)e.value="";});document.getElementById("f_industry").value="";document.getElementById("f_name").value="";}
+function st(n){document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("act",t.textContent.includes(n==="input"?"填":n==="report"?"报告":"说明"));});document.querySelectorAll(".pn").forEach(function(p){p.classList.toggle("act",p.id==="p-"+n);});window.scrollTo(0,0);}
+buildForm();
 </script>
-
-
-
-
-<!-- ===== 返回入口链接 ===== -->
-<div style="text-align:center; padding:16px; margin-top:4px;">
-  <a href="https://sparrow528.github.io/checkup-landing/" style="display:inline-block; padding:10px 24px; background:#e8eaf6; color:#065f46; border-radius:8px; font-size:13px; font-weight:600; text-decoration:none; border:1px solid #c5cae9;">
-    ← 返回免费工具入口
-  </a>
-</div>
-
-<!-- ===== 会员引导横幅 ===== -->
-<div style="background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); color:white; text-align:center; padding:24px 16px; margin-top:20px;">
-  <div style="font-size:16px; font-weight:700; margin-bottom:6px;">🔒 免费版 · 基础税负自查</div>
-  <div style="font-size:13px; opacity:0.85; margin-bottom:14px;">升级会员享深度税负分析 + 行业对比报告 + 一对一财税咨询</div>
-  <a href="https://sparrow528.github.io/tax-membership/" target="_blank" style="display:inline-block; background:white; color:#302b63; padding:10px 28px; border-radius:8px; font-weight:600; font-size:14px; text-decoration:none;">👉 了解会员方案</a>
-  <div style="margin-top:10px; font-size:11px; opacity:0.6;">宇守信投资管理咨询（北京）有限公司 · 洪淳宇</div>
-</div>
-
 </body>
 </html>
