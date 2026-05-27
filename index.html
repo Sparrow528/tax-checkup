@@ -155,14 +155,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
   </div>
 </div>
 
-<div class="bk"><a href="https://sparrow528.github.io/checkup-landing/">← 返回免费工具入口</a></div>
+<div class="bk"><a href="https://sparrow528.github.io/checkup-landing/">← 返回共享工具入口</a></div>
 
 
 <div class="fb">
-  <div class="t">🔒 免费版 · 基础税负自查</div>
+  <div class="t">🔒 共享版 · 基础税负自查</div>
   <div class="d">升级会员享深度税负分析 + 一对一财税咨询</div>
   <a class="b" href="https://sparrow528.github.io/tax-membership/" target="_blank">👉 了解会员方案</a>
   <div class="c">宇守信投资管理咨询（北京）有限公司 · 洪淳宇</div>
+  <div style="font-size:10px;color:#999;margin-top:2px">版本 V3.0</div>
 </div>
 
 <script>
@@ -281,7 +282,7 @@ function shareResult(){
   h+='</div><div style="font-size:13px;font-weight:700;color:#065f46;margin-bottom:8px">📋 指标明细</div>';
   var dg2={};results.forEach(function(r){if(!dg2[r.dim])dg2[r.dim]=[];dg2[r.dim].push(r);});
   DIMS.forEach(function(dim){var items=dg2[dim]||[];if(!items.length)return;var dt=items.reduce(function(s,r){return s+r.score;},0),dm=items.reduce(function(s,r){return s+r.max;},0),p2=dm>0?Math.round(dt/dm*100):0,dc="#16a34a";if(p2<60)dc="#dc2626";else if(p2<80)dc="#d97706";h+='<div class="sc2"><div class="st"><span>'+dim+'</span><span style="color:'+dc+'">'+dt+'/'+dm+' 分 ('+p2+'%)</span></div>';items.forEach(function(r){var vs=r.val!==null&&!isNaN(r.val)?r.val.toFixed(1)+"%":"—",c2=sc2[r.status]||["#f0f0f0","#999"];h+='<div class="sr"><div><div class="in">'+r.name+'</div><div class="in2">标准：'+r.std+'</div></div><div class="iv"><div>'+vs+'</div><div class="in2">'+r.score+'分</div></div><span class="it" style="background:'+c2[0]+';color:'+c2[1]+'">'+(sm2[r.status]||"")+'</span></div>';});h+='</div>';});
-  h+='<div class="mk"><h3>🔒 免费版 · 基础税负自查</h3><p>升级会员享深度税负分析 + 一对一财税咨询</p><a class="btn" href="https://sparrow528.github.io/tax-membership/" target="_blank">👉 了解会员方案</a></div><div style="background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:12px"><div style="font-size:12px;font-weight:700;color:#065f46;margin-bottom:2px">👤 洪淳宇 · 您身边的财税专家</div><div style="font-size:10px;color:#666">专业税负分析·税务合规·财税咨询</div><div style="font-size:10px;color:#999;margin-top:4px">📞 18601294989</div></div><div style="font-size:9px;color:#bbb;text-align:center;line-height:1.6">* 本报告由自查工具自动生成，仅供初步参考。<br>* 宇守信投资管理咨询（北京）有限公司 · 洪淳宇</div></div></body></html>';
+  h+='<div class="mk"><h3>🔒 共享版 · 基础税负自查</h3><p>升级会员享深度税负分析 + 一对一财税咨询</p><a class="btn" href="https://sparrow528.github.io/tax-membership/" target="_blank">👉 了解会员方案</a></div><div style="background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:12px"><div style="font-size:12px;font-weight:700;color:#065f46;margin-bottom:2px">👤 洪淳宇 · 您身边的财税专家</div><div style="font-size:10px;color:#666">专业税负分析·税务合规·财税咨询</div><div style="font-size:10px;color:#999;margin-top:4px">📞 18601294989</div></div><div style="font-size:9px;color:#bbb;text-align:center;line-height:1.6">* 本报告由自查工具自动生成，仅供初步参考。<br>* 宇守信投资管理咨询（北京）有限公司 · 洪淳宇<br>版本 V3.0</div></div></body></html>';
   var w=window.open("","_blank");w.document.write(h);w.document.close();
 }
 
