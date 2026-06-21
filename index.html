@@ -6,29 +6,29 @@
 <title>企业税负自查 — 宇守信咨询</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#2d3436;padding-bottom:60px}
-.hd{background:linear-gradient(135deg,#065f46,#059669);color:#fff;padding:26px 16px 20px;text-align:center}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#d8eed9 0%,#add8ad 60%,#e8f5e9 100%);color:#2d3436;padding-bottom:100px}
+.hd{background:linear-gradient(135deg,#1a5c3a,#059669);color:#fff;padding:26px 16px 20px;text-align:center}
 .hd h1{font-size:19px;font-weight:700}
 .hd p{font-size:11px;opacity:.8;margin-top:4px}
 .tabs{display:flex;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.05);position:sticky;top:0;z-index:10}
 .tab{flex:1;text-align:center;padding:11px 0;font-size:13px;font-weight:500;color:#999;cursor:pointer;border-bottom:2px solid transparent}
-.tab.act{color:#065f46;border-bottom-color:#065f46;font-weight:600}
+.tab.act{color:#1a5c3a;border-bottom-color:#1a5c3a;font-weight:600}
 .pn{padding:12px;max-width:640px;margin:0 auto;display:none}
 .pn.act{display:block}
 .card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:10px}
-.ct{background:#f0f7f4;padding:10px 14px;font-size:12px;font-weight:600;color:#065f46;border-bottom:1px solid #e0ede8}
+.ct{background:linear-gradient(180deg,#d8eed9 0%,#add8ad 60%,#e8f5e9 100%);padding:10px 14px;font-size:12px;font-weight:600;color:#1a5c3a;border-bottom:1px solid #e0ede8}
 .gr{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px 12px}
 .gr .fw{grid-column:1/-1}
 .frr{display:flex;align-items:center;gap:4px}
 .frr label{font-size:11px;color:#777;white-space:nowrap;min-width:40px}
-.frr input,.frr select{padding:7px 8px;border:1px solid #ddd;border-radius:8px;font-size:12px;flex:1;min-width:0;background:#fffcf0;outline:0}
+.frr input,.frr select{padding:7px 8px;border:1px solid #ddd;border-radius:8px;font-size:12px;flex:1;min-width:0;background:linear-gradient(180deg,#d8eed9 0%,#add8ad 60%,#e8f5e9 100%);outline:0}
 .frr select{background:#fff}
-.frr input:focus,.frr select:focus{border-color:#065f46}
+.frr input:focus,.frr select:focus{border-color:#1a5c3a}
 .btm{position:sticky;bottom:0;background:#fff;padding:10px 12px;display:flex;gap:8px;box-shadow:0 -2px 8px rgba(0,0,0,.04);z-index:10;max-width:640px;margin:0 auto}
 .btm button{flex:1;padding:11px;border-radius:10px;font-size:13px;font-weight:600;border:0;cursor:pointer}
-.bp{background:linear-gradient(135deg,#065f46,#059669);color:#fff}
-.bs{background:#eef2f7;color:#666}
-.sc{background:linear-gradient(135deg,#065f46,#059669);color:#fff;border-radius:14px;padding:22px 16px;text-align:center;margin-bottom:12px}
+.bp{background:linear-gradient(135deg,#1a5c3a,#059669);color:#fff}
+.bs{background:#e8f0ec;color:#666}
+.sc{background:linear-gradient(135deg,#1a5c3a,#059669);color:#fff;border-radius:14px;padding:22px 16px;text-align:center;margin-bottom:12px}
 .sc .lb{font-size:11px;opacity:.85}
 .sc .n{font-size:34px;font-weight:800;margin:4px 0}
 .sc .g{font-size:14px;font-weight:600;margin-bottom:2px}
@@ -39,30 +39,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .dc .ds{font-size:18px;font-weight:700}
 .dc .dm{font-size:10px;color:#bbb;margin-top:2px}
 .dc .dr{font-size:10px;margin-top:3px;padding:2px 8px;border-radius:6px;display:inline-block}
-.grn{background:#e6f7e6;color:#16a34a}
-.yel{background:#fef9e7;color:#d97706}
-.red{background:#feeaea;color:#dc2626}
+.grn{background:#e6f7e6;color:#059669}
+.yel{background:linear-gradient(180deg,#d8eed9 0%,#add8ad 60%,#e8f5e9 100%);color:#d97706}
+.red{background:linear-gradient(180deg,#d8eed9 0%,#add8ad 60%,#e8f5e9 100%);color:#dc2626}
 .tbl{width:100%}
-.th{display:flex;background:#eef6ff;padding:7px 10px;font-size:10px;color:#666;font-weight:600}
+.th{display:flex;background:#f4faf6;padding:7px 10px;font-size:10px;color:#666;font-weight:600}
 .th span{flex:1;text-align:center}
 .th span:first-child{flex:1.5;text-align:left}
 .tr{display:flex;padding:7px 10px;font-size:11px;border-bottom:1px solid #f5f7fa;align-items:center}
 .tr span{flex:1;text-align:center}
 .tr span:first-child{flex:1.5;text-align:left;font-weight:600;color:#333}
-.st-g{color:#16a34a;font-weight:600}
+.st-g{color:#059669;font-weight:600}
 .st-y{color:#d97706;font-weight:600}
 .st-r{color:#dc2626;font-weight:600}
 .hc{background:#fff;border-radius:10px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.hc h3{font-size:13px;margin-bottom:6px;color:#065f46}
+.hc h3{font-size:13px;margin-bottom:6px;color:#1a5c3a}
 .hc p,.hc li{font-size:12px;color:#555;line-height:1.7}
-.con{background:#eef6ff;border-radius:8px;padding:10px}
-.con strong{font-size:12px;color:#065f46}
+.con{background:#f4faf6;border-radius:8px;padding:10px}
+.con strong{font-size:12px;color:#1a5c3a}
 .bk{text-align:center;padding:12px}
-.bk a{display:inline-block;padding:8px 20px;background:#eef2f7;color:#065f46;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #d0dcec}
-.fb{background:linear-gradient(135deg,#065f46,#059669);color:#fff;text-align:center;padding:18px 14px;margin-top:8px}
+.bk a{display:inline-block;padding:8px 20px;background:#e8f0ec;color:#1a5c3a;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #c5d5cc}
+.fb{background:linear-gradient(135deg,#1a5c3a,#059669);color:#fff;text-align:center;padding:18px 14px;margin-top:8px}
 .fb .t{font-size:14px;font-weight:700}
 .fb .d{font-size:11px;opacity:.85;margin:4px 0 10px}
-.fb .b{display:inline-block;background:#fff;color:#065f46;padding:7px 22px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none}
+.fb .b{display:inline-block;background:#fff;color:#1a5c3a;padding:7px 22px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none}
 .fb .c{font-size:10px;opacity:.6;margin-top:6px}
 @media(max-width:480px){.gr{grid-template-columns:1fr}.dg{grid-template-columns:1fr}}
 </style>
@@ -251,7 +251,7 @@ function calc(){
   var dg=document.getElementById("dimGrid");
   dg.innerHTML=DIMS.map(function(dim){
     var x=ds[dim]||{a:0,m:0},p=x.m>0?Math.round(x.a/x.m*100):0,dg2=dimGrade(p),cl="",c2="";
-    if(p<60){cl="red";c2="#dc2626";}else if(p<80){cl="yel";c2="#d97706";}else{cl="grn";c2="#16a34a";}
+    if(p<60){cl="red";c2="#dc2626";}else if(p<80){cl="yel";c2="#d97706";}else{cl="grn";c2="#059669";}
     return'<div class="dc"><div class="dn">'+dim+'</div><div class="ds" style="color:'+c2+'">'+x.a+'</div><div class="dm">/ '+x.m+' 分</div><div class="dr '+cl+'">'+dg2+' · '+p+'%</div></div>';
   }).join("");
   var rows=document.getElementById("indicatorRows"),sm={green:"🟢 正常",yellow:"🟡 关注",red:"🔴 预警"},cm={green:"st-g",yellow:"st-y",red:"st-r"};
@@ -275,14 +275,23 @@ function shareResult(){
   var tot=0,tmax=0;DIMS.forEach(function(dim){var x=ds[dim]||{a:0,m:0};tot+=x.a;tmax+=x.m;});
   var rate=tmax>0?Math.round(tot/tmax*100):0,g="",sg="";
   if(rate>=90){g="AAA 税负优秀";sg="🎉 税负健康，继续保持！";}else if(rate>=80){g="AA 税负良好";sg="👍 整体税负合理";}else if(rate>=70){g="A 基本正常";sg="📌 部分指标可优化";}else if(rate>=60){g="BBB 存在风险";sg="⚠️ 建议自查";}else{g="B 风险较高";sg="🔴 建议咨询专家";}
-  var sc2={green:["#e6f7e6","#16a34a"],yellow:["#fef9e7","#d97706"],red:["#feeaea","#dc2626"]},sm2={green:"🟢 正常",yellow:"🟡 关注",red:"🔴 预警"};
-  var h='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>企业税负自查报告 - 宇守信咨询</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;padding:0 0 30px}.rh{background:linear-gradient(135deg,#065f46,#059669);color:#fff;padding:24px 18px 20px;text-align:center}.rh h1{font-size:18px;font-weight:700}.rh .s{font-size:11px;opacity:.8;margin-top:4px}.rh .tm{font-size:10px;opacity:.6;margin-top:4px}.ct{padding:12px;max-width:580px;margin:0 auto}.sc{background:linear-gradient(135deg,#065f46,#059669);border-radius:14px;padding:22px 18px;text-align:center;color:#fff;margin-bottom:14px}.sc .lb{font-size:11px;opacity:.8}.sc .n{font-size:34px;font-weight:800;margin:4px 0}.sc .g{font-size:14px;font-weight:600}.sc .sg{font-size:11px;opacity:.9;margin-top:4px}.dg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}.dc{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}.dc .dn{font-size:10px;color:#999}.dc .ds{font-size:18px;font-weight:700}.dc .dm{font-size:10px;color:#bbb;margin-top:2px}.dc .dr{display:inline-block;padding:2px 8px;border-radius:6px;font-size:9px;margin-top:3px}.sc2{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:10px}.st{padding:8px 12px;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0;font-size:12px;font-weight:700;color:#065f46}.sr{display:flex;align-items:center;padding:7px 12px;border-bottom:1px solid #f8f8f8;font-size:11px}.sr .in{flex:1;font-weight:600;color:#333}.sr .iv{text-align:right;margin:0 6px;min-width:60px}.sr .in2{font-size:10px;color:#999}.sr .it{padding:2px 6px;border-radius:6px;font-size:9px;font-weight:600;white-space:nowrap}.mk{background:linear-gradient(135deg,#065f46,#059669);border-radius:12px;padding:18px 16px;text-align:center;color:#fff;margin:14px 0}.mk h3{font-size:14px;font-weight:700}.mk p{font-size:11px;opacity:.8;line-height:1.6;margin-bottom:8px}.mk .btn{display:inline-block;background:#fff;color:#065f46;padding:7px 20px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none}.ft{text-align:center;padding:10px;font-size:9px;color:#bbb;line-height:1.6}@media(max-width:400px){.dg{grid-template-columns:1fr 1fr}}</style></head><body><div class="rh"><h1>📋 企业税负自查报告</h1><div class="s">'+(d.名称||"企业")+' · '+d.行业+' · 宇守信咨询 · 洪淳宇</div><div class="tm">'+new Date().toLocaleString()+'</div></div><div class="ct"><div class="sc"><div class="lb">'+d.行业+' · 综合评分</div><div class="n">'+tot+'/'+tmax+'</div><div class="g">'+g+'</div><div class="sg">'+sg+'</div></div>';
-  h+='<div style="font-size:13px;font-weight:700;color:#065f46;margin-bottom:8px">📊 五大维度评分</div><div class="dg">';
-  DIMS.forEach(function(dim){var x=ds[dim]||{a:0,m:0},p=x.m>0?Math.round(x.a/x.m*100):0,c="#16a34a",bg="#e6f7e6";if(p<60){c="#dc2626";bg="#feeaea";}else if(p<80){c="#d97706";bg="#fef9e7";}h+='<div class="dc"><div class="dn">'+dim+'</div><div class="ds" style="color:'+c+'">'+x.a+'</div><div class="dm">/ '+x.m+' 分</div><div class="dr" style="background:'+bg+';color:'+c+'">'+dimGrade(p)+' · '+p+'%</div></div>';});
-  h+='</div><div style="font-size:13px;font-weight:700;color:#065f46;margin-bottom:8px">📋 指标明细</div>';
+  var sc2={green:["#e6f7e6","#059669"],yellow:["#fef9e7","#d97706"],red:["#feeaea","#dc2626"]},sm2={green:"🟢 正常",yellow:"🟡 关注",red:"🔴 预警"};
+  var h='<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>企业税负自查报告 - 宇守信咨询</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#d8eed9 0%,#add8ad 60%,#e8f5e9 100%);color:#333;padding:0 0 30px}.rh{background:linear-gradient(135deg,#1a5c3a,#059669);color:#fff;padding:24px 18px 20px;text-align:center}.rh h1{font-size:18px;font-weight:700}.rh .s{font-size:11px;opacity:.8;margin-top:4px}.rh .tm{font-size:10px;opacity:.6;margin-top:4px}.ct{padding:12px;max-width:580px;margin:0 auto}.sc{background:linear-gradient(135deg,#1a5c3a,#059669);border-radius:14px;padding:22px 18px;text-align:center;color:#fff;margin-bottom:14px}.sc .lb{font-size:11px;opacity:.8}.sc .n{font-size:34px;font-weight:800;margin:4px 0}.sc .g{font-size:14px;font-weight:600}.sc .sg{font-size:11px;opacity:.9;margin-top:4px}.dg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}.dc{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}.dc .dn{font-size:10px;color:#999}.dc .ds{font-size:18px;font-weight:700}.dc .dm{font-size:10px;color:#bbb;margin-top:2px}.dc .dr{display:inline-block;padding:2px 8px;border-radius:6px;font-size:9px;margin-top:3px}.sc2{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:10px}.st{padding:8px 12px;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0;font-size:12px;font-weight:700;color:#1a5c3a}.sr{display:flex;align-items:center;padding:7px 12px;border-bottom:1px solid #f8f8f8;font-size:11px}.sr .in{flex:1;font-weight:600;color:#333}.sr .iv{text-align:right;margin:0 6px;min-width:60px}.sr .in2{font-size:10px;color:#999}.sr .it{padding:2px 6px;border-radius:6px;font-size:9px;font-weight:600;white-space:nowrap}.mk{background:linear-gradient(135deg,#1a5c3a,#059669);border-radius:12px;padding:18px 16px;text-align:center;color:#fff;margin:14px 0}.mk h3{font-size:14px;font-weight:700}.mk p{font-size:11px;opacity:.8;line-height:1.6;margin-bottom:8px}.mk .btn{display:inline-block;background:#fff;color:#1a5c3a;padding:7px 20px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none}.ft{text-align:center;padding:10px;font-size:9px;color:#bbb;line-height:1.6}@media(max-width:400px){.dg{grid-template-columns:1fr 1fr}}</style></head><body><div class="rh"><h1>📋 企业税负自查报告</h1><div class="s">'+(d.名称||"企业")+' · '+d.行业+' · 宇守信咨询 · 洪淳宇</div><div class="tm">'+new Date().toLocaleString()+'</div></div><div class="ct"><div class="sc"><div class="lb">'+d.行业+' · 综合评分</div><div class="n">'+tot+'/'+tmax+'</div><div class="g">'+g+'</div><div class="sg">'+sg+'</div></div>';
+  h+='<div style="font-size:13px;font-weight:700;color:#1a5c3a;margin-bottom:8px">📊 五大维度评分</div><div class="dg">';
+  DIMS.forEach(function(dim){var x=ds[dim]||{a:0,m:0},p=x.m>0?Math.round(x.a/x.m*100):0,c="#059669",bg="#e6f7e6";if(p<60){c="#dc2626";bg="#feeaea";}else if(p<80){c="#d97706";bg="#fef9e7";}h+='<div class="dc"><div class="dn">'+dim+'</div><div class="ds" style="color:'+c+'">'+x.a+'</div><div class="dm">/ '+x.m+' 分</div><div class="dr" style="background:'+bg+';color:'+c+'">'+dimGrade(p)+' · '+p+'%</div></div>';});
+  h+='</div><div style="font-size:13px;font-weight:700;color:#1a5c3a;margin-bottom:8px">📋 指标明细</div>';
   var dg2={};results.forEach(function(r){if(!dg2[r.dim])dg2[r.dim]=[];dg2[r.dim].push(r);});
-  DIMS.forEach(function(dim){var items=dg2[dim]||[];if(!items.length)return;var dt=items.reduce(function(s,r){return s+r.score;},0),dm=items.reduce(function(s,r){return s+r.max;},0),p2=dm>0?Math.round(dt/dm*100):0,dc="#16a34a";if(p2<60)dc="#dc2626";else if(p2<80)dc="#d97706";h+='<div class="sc2"><div class="st"><span>'+dim+'</span><span style="color:'+dc+'">'+dt+'/'+dm+' 分 ('+p2+'%)</span></div>';items.forEach(function(r){var vs=r.val!==null&&!isNaN(r.val)?r.val.toFixed(1)+"%":"—",c2=sc2[r.status]||["#f0f0f0","#999"];h+='<div class="sr"><div><div class="in">'+r.name+'</div><div class="in2">标准：'+r.std+'</div></div><div class="iv"><div>'+vs+'</div><div class="in2">'+r.score+'分</div></div><span class="it" style="background:'+c2[0]+';color:'+c2[1]+'">'+(sm2[r.status]||"")+'</span></div>';});h+='</div>';});
-  h+='<div class="mk"><h3>🔒 共享版 · 基础税负自查</h3><p>升级会员享深度税负分析 + 一对一财税咨询</p><a class="btn" href="https://sparrow528.github.io/tax-membership/" target="_blank">👉 了解会员方案</a></div><div style="background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:12px"><div style="font-size:12px;font-weight:700;color:#065f46;margin-bottom:2px">👤 洪淳宇 · 您身边的财税专家</div><div style="font-size:10px;color:#666">专业税负分析·税务合规·财税咨询</div><div style="font-size:10px;color:#999;margin-top:4px">📞 18601294989</div></div><div style="font-size:9px;color:#bbb;text-align:center;line-height:1.6">* 本报告由自查工具自动生成，仅供初步参考。<br>* 宇守信投资管理咨询（北京）有限公司 · 洪淳宇<br>版本 V3.0</div></div></body></html>';
+  DIMS.forEach(function(dim){var items=dg2[dim]||[];if(!items.length)return;var dt=items.reduce(function(s,r){return s+r.score;},0),dm=items.reduce(function(s,r){return s+r.max;},0),p2=dm>0?Math.round(dt/dm*100):0,dc="#059669";if(p2<60)dc="#dc2626";else if(p2<80)dc="#d97706";h+='<div class="sc2"><div class="st"><span>'+dim+'</span><span style="color:'+dc+'">'+dt+'/'+dm+' 分 ('+p2+'%)</span></div>';items.forEach(function(r){var vs=r.val!==null&&!isNaN(r.val)?r.val.toFixed(1)+"%":"—",c2=sc2[r.status]||["#f0f0f0","#999"];h+='<div class="sr"><div><div class="in">'+r.name+'</div><div class="in2">标准：'+r.std+'</div></div><div class="iv"><div>'+vs+'</div><div class="in2">'+r.score+'分</div></div><span class="it" style="background:'+c2[0]+';color:'+c2[1]+'">'+(sm2[r.status]||"")+'</span></div>';});h+='</div>';});
+  h+='<div class="mk"><h3>🔒 共享版 · 基础税负自查</h3><p>升级会员享深度税负分析 + 一对一财税咨询</p><a class="btn" href="https://sparrow528.github.io/tax-membership/" target="_blank">👉 了解会员方案</a></div><div style="background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:12px"><div style="font-size:12px;font-weight:700;color:#1a5c3a;margin-bottom:2px">👤 洪淳宇 · 您身边的财税专家</div><div style="font-size:10px;color:#666">专业税负分析·税务合规·财税咨询</div><div style="font-size:10px;color:#999;margin-top:4px">📞 18601294989</div></div><div style="font-size:9px;color:#bbb;text-align:center;line-height:1.6">* 本报告由自查工具自动生成，仅供初步参考。<br>* 宇守信投资管理咨询（北京）有限公司 · 洪淳宇<br>版本 V3.0</div></div>
+<div class="bottom-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-top:1px solid rgba(0,0,0,.06);padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:16px;font-size:12px;color:#7aa88a;z-index:100">
+  <span style="font-weight:600;color:#4a7c5c">宇守信咨询</span>
+  <span style="color:#ccc">|</span>
+  <span>186-0129-4989</span>
+  <span style="color:#ccc">|</span>
+  <span>版本 V3.1</span>
+</div>
+
+</body></html>';
   var w=window.open("","_blank");w.document.write(h);w.document.close();
 }
 
@@ -290,5 +299,14 @@ function resetAll(){FIELDS.forEach(function(f){var e=document.getElementById("f_
 function st(n){document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("act",t.textContent.includes(n==="input"?"填":n==="report"?"报告":"说明"));});document.querySelectorAll(".pn").forEach(function(p){p.classList.toggle("act",p.id==="p-"+n);});window.scrollTo(0,0);}
 buildForm();
 </script>
+
+<div class="bottom-bar" style="position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-top:1px solid rgba(0,0,0,.06);padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:16px;font-size:12px;color:#7aa88a;z-index:100">
+  <span style="font-weight:600;color:#4a7c5c">宇守信咨询</span>
+  <span style="color:#ccc">|</span>
+  <span>186-0129-4989</span>
+  <span style="color:#ccc">|</span>
+  <span>版本 V3.1</span>
+</div>
+
 </body>
 </html>
