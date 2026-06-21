@@ -101,7 +101,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 
   <div class="card">
     <div class="ct">💰 税务数据（万元）</div>
-    <div class="gr" id="inputGrid"></div>
+    <div class="gr" id="inputGrid">
+      <!-- 静态兜底：JS 失败时仍可见 -->
+      <div class="frr"><label>营业收入</label><input type="number" step="any" id="f_营业收入" placeholder="0"></div>
+      <div class="frr"><label>营业成本</label><input type="number" step="any" id="f_营业成本" placeholder="0"></div>
+      <div class="frr"><label>利润总额</label><input type="number" step="any" id="f_利润总额" placeholder="0"></div>
+      <div class="frr"><label>成本费用总额</label><input type="number" step="any" id="f_成本费用总额" placeholder="0"></div>
+      <div class="frr"><label>应纳增值税额</label><input type="number" step="any" id="f_应纳增值税额" placeholder="0"></div>
+      <div class="frr"><label>实际缴纳所得税额</label><input type="number" step="any" id="f_实际缴纳所得税额" placeholder="0"></div>
+      <div class="frr"><label>实际缴纳税费总额</label><input type="number" step="any" id="f_实际缴纳税费总额" placeholder="0"></div>
+      <div class="frr"><label>增值税进项税额</label><input type="number" step="any" id="f_增值税进项税额" placeholder="0"></div>
+      <div class="frr"><label>增值税销项税额</label><input type="number" step="any" id="f_增值税销项税额" placeholder="0"></div>
+      <div class="frr"><label>研发费用</label><input type="number" step="any" id="f_研发费用" placeholder="0"></div>
+    </div>
   </div>
 
   <div class="btm">
